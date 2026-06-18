@@ -243,7 +243,7 @@ header.nav.scrolled {
 }
 @keyframes spin-slow { to { transform: rotate(360deg); } }
 
-nav.links { display: flex; gap: 2.2rem; list-style: none; }
+nav.links { display: flex; align-items: center; gap: 2.2rem; list-style: none; }
 nav.links a {
   color: var(--text-mid);
   text-decoration: none;
