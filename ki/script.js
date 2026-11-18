@@ -86,20 +86,41 @@
   });
 })();
 
-// Simple contact form handler (no backend — front-end only)
+// Kontaktformular → https://lead.netpartner.cloud/contact (Server der Lead Machine)
 (function contactForm() {
   const form = document.querySelector('#contact-form');
   if (!form) return;
-  form.addEventListener('submit', (e) => {
+  const status = document.createElement('p');
+  status.className = 'form-status';
+  status.style.cssText = 'margin-top:1rem;font-size:.92rem;color:#c9cfdb';
+  form.appendChild(status);
+
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const btn = form.querySelector('button[type="submit"]');
     const original = btn.innerHTML;
     btn.innerHTML = 'Wird gesendet…';
     btn.disabled = true;
-    setTimeout(() => {
-      btn.innerHTML = 'Nachricht gesendet ✓';
-      form.reset();
-      setTimeout(() => { btn.innerHTML = original; btn.disabled = false; }, 2600);
-    }, 900);
+    status.textContent = '';
+    try {
+      const data = new URLSearchParams();
+      for (const [k, v] of new FormData(form).entries()) data.append(k, v);
+      const res = await fetch('https://lead.netpartner.cloud/contact', { method: 'POST', body: data });
+      const out = await res.json().catch(() => ({}));
+      if (res.ok && out.ok) {
+        btn.innerHTML = 'Nachricht gesendet ✓';
+        status.textContent = 'Danke — Ihre Nachricht ist angekommen. Wir melden uns persönlich zurück.';
+        form.reset();
+      } else {
+        btn.innerHTML = original;
+        btn.disabled = false;
+        status.textContent = out.error || 'Das hat leider nicht geklappt. Bitte schreiben Sie an info@netpartnersystem.com.';
+      }
+    } catch (err) {
+      btn.innerHTML = original;
+      btn.disabled = false;
+      status.textContent = 'Keine Verbindung zum Server. Bitte schreiben Sie an info@netpartnersystem.com.';
+    }
+    setTimeout(() => { btn.innerHTML = original; btn.disabled = false; }, 4000);
   });
 })();
