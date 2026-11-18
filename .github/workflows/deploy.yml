@@ -8,11 +8,15 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    env:
+      FTP_SERVER: ${{ secrets.FTP_SERVER }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # Ohne hinterlegte FTP-Secrets wird der Deploy übersprungen statt rot zu werden.
       - name: Deploy via FTP nach /public_html/
+        if: env.FTP_SERVER != ''
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_SERVER }}
@@ -21,7 +25,7 @@ jobs:
           port: 21
           local-dir: ./
           server-dir: /public_html/
-          # Niemals Dateien löschen, die nicht im Repo stehen (WordPress-Installation, Assets, ki/)
+          # Niemals Dateien löschen, die nicht im Repo stehen (WordPress, Assets, ki/)
           dangerous-clean-slate: false
           exclude: |
             **/.git*
@@ -40,3 +44,7 @@ jobs:
             file5.php
             index.php
             .htaccess*
+
+      - name: Hinweis, wenn keine FTP-Zugangsdaten hinterlegt sind
+        if: env.FTP_SERVER == ''
+        run: echo "::notice::Kein FTP-Secret hinterlegt — Repo ist versioniert, Deploy erfolgt manuell per FTP."
