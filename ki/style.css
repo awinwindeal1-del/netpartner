@@ -86,7 +86,7 @@ body {
   50% { opacity: 0.8; }
 }
 
-::selection { background: var(--accent); color: #00150f; }
+::selection { background: var(--accent); color: #1b1305; }
 
 /* ---------- Layout helpers ---------- */
 .wrap {
@@ -185,8 +185,8 @@ p.lead {
   white-space: nowrap;
 }
 .btn-primary {
-  color: #00211b;
-  background: linear-gradient(135deg, #7ef6e1, var(--accent) 55%, #4ad8c2);
+  color: #1b1305;
+  background: linear-gradient(135deg, #f8ecc4, var(--accent) 52%, #b0862c);
   box-shadow: 0 8px 30px -6px var(--accent-glow), inset 0 1px 0 rgba(255,255,255,0.6);
 }
 .btn-primary:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 14px 40px -6px var(--accent-glow), inset 0 1px 0 rgba(255,255,255,0.7); filter: brightness(1.05); }
@@ -458,7 +458,7 @@ nav.links a:hover::after, nav.links a.active::after { width: 100%; }
   width: 52px; height: 52px;
   border-radius: 14px;
   display: flex; align-items: center; justify-content: center;
-  background: linear-gradient(135deg, rgba(94,234,212,0.18), rgba(129,140,248,0.12));
+  background: linear-gradient(135deg, rgba(230,198,117,0.20), rgba(209,161,74,0.12));
   border: 1px solid rgba(255,255,255,0.08);
   margin-bottom: 1.5rem;
   font-size: 1.4rem;
@@ -560,7 +560,7 @@ footer {
   text-decoration: none;
   transition: all var(--duration-normal);
 }
-.social-row a:hover { background: var(--accent); color: #00211b; border-color: var(--accent); transform: translateY(-3px); }
+.social-row a:hover { background: var(--accent); color: #1b1305; border-color: var(--accent); transform: translateY(-3px); }
 
 /* ---------- Reveal on scroll ---------- */
 .reveal { opacity: 0; transform: translateY(36px); transition: opacity 0.9s var(--ease-out-expo), transform 0.9s var(--ease-out-expo); }
@@ -598,7 +598,7 @@ footer {
 .testi-card .quote-mark { font-family: var(--font-display); font-size: 3rem; color: var(--accent); line-height: 1; opacity: 0.5; }
 .testi-card p { color: var(--text-mid); margin: 1rem 0 1.6rem; font-size: 1.02rem; }
 .testi-author { display: flex; align-items: center; gap: 0.9rem; }
-.avatar { width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), var(--accent-2)); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-weight: 700; color: #00211b; }
+.avatar { width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), var(--accent-2)); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-weight: 700; color: #1b1305; }
 .testi-author .name { font-weight: 600; font-size: 0.92rem; }
 .testi-author .role { color: var(--text-low); font-size: 0.82rem; }
 
@@ -628,7 +628,7 @@ footer {
 .contact-info-item .ci-icon {
   width: 44px; height: 44px; flex-shrink: 0;
   border-radius: 12px;
-  background: rgba(94,234,212,0.1);
+  background: rgba(230,198,117,0.10);
   display: flex; align-items: center; justify-content: center;
   font-size: 1.2rem;
 }
