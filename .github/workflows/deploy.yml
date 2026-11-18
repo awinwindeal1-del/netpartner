@@ -12,7 +12,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Deploy via FTP to Hostinger
+      - name: Deploy via FTP nach /public_html/
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_SERVER }}
@@ -21,8 +21,22 @@ jobs:
           port: 21
           local-dir: ./
           server-dir: /public_html/
+          # Niemals Dateien löschen, die nicht im Repo stehen (WordPress-Installation, Assets, ki/)
+          dangerous-clean-slate: false
           exclude: |
             **/.git*
             **/.git*/**
             .github/**
             README.md
+            wp-*
+            wp-*/**
+            readme.html
+            license.txt
+            xmlrpc.php
+            .private
+            .tmb
+            ai/**
+            assets/**
+            file5.php
+            index.php
+            .htaccess*
