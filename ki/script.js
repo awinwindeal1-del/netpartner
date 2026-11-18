@@ -138,12 +138,12 @@
       } else {
         btn.innerHTML = original;
         btn.disabled = false;
-        status.textContent = out.error || 'Das hat leider nicht geklappt. Bitte schreiben Sie an info@netpartnersystem.com.';
+        status.textContent = out.error || 'Das hat leider nicht geklappt. Bitte schreiben Sie an post@netpartner.cloud.';
       }
     } catch (err) {
       btn.innerHTML = original;
       btn.disabled = false;
-      status.textContent = 'Keine Verbindung zum Server. Bitte schreiben Sie an info@netpartnersystem.com.';
+      status.textContent = 'Keine Verbindung zum Server. Bitte schreiben Sie an post@netpartner.cloud.';
     }
     setTimeout(() => { btn.innerHTML = original; btn.disabled = false; }, 4000);
   });
