@@ -86,6 +86,26 @@
   });
 })();
 
+
+// Attribution: Kanal, Kampagne, Suchbegriff, gclid — First-Touch pro Sitzung
+(function attribution() {
+  try {
+    const q = new URLSearchParams(location.search);
+    const ref = document.referrer || '';
+    let refHost = '';
+    try { refHost = ref ? new URL(ref).hostname.replace(/^www\./, '') : ''; } catch (e) {}
+    const attr = {
+      channel: q.get('utm_source') || refHost || 'direkt',
+      campaign: q.get('utm_campaign') || '',
+      term: q.get('utm_term') || q.get('keyword') || '',
+      gclid: q.get('gclid') || '',
+      landing: location.pathname || '/',
+      referrer: ref
+    };
+    if (!sessionStorage.getItem('lm_attr')) sessionStorage.setItem('lm_attr', JSON.stringify(attr));
+  } catch (e) {}
+})();
+
 // Kontaktformular → https://lead.netpartner.cloud/contact (Server der Lead Machine)
 (function contactForm() {
   const form = document.querySelector('#contact-form');
@@ -105,6 +125,10 @@
     try {
       const data = new URLSearchParams();
       for (const [k, v] of new FormData(form).entries()) data.append(k, v);
+      try {
+        const a = JSON.parse(sessionStorage.getItem('lm_attr') || '{}');
+        Object.entries(a).forEach(([k, v]) => { if (v) data.append(k, v); });
+      } catch (e) {}
       const res = await fetch('https://lead.netpartner.cloud/contact', { method: 'POST', body: data });
       const out = await res.json().catch(() => ({}));
       if (res.ok && out.ok) {
