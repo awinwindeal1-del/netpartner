@@ -570,6 +570,9 @@ footer {
 .breadcrumb a { color: var(--text-low); text-decoration: none; }
 .breadcrumb a:hover { color: var(--accent); }
 
+/* Sprungmarken: sticky Header nicht ueberdecken */
+a.card[id], section[id] { scroll-margin-top: 110px; }
+
 /* ---------- FAQ ---------- */
 .faq-item { border-bottom: 1px solid var(--glass-border); padding: 1.6rem 0; }
 .faq-q {
