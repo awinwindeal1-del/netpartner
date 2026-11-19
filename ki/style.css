@@ -64,22 +64,6 @@ body {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-.starfield {
-  display: none;
-}
-.starfield span {
-  position: absolute;
-  width: 2px; height: 2px;
-  background: #fff;
-  border-radius: 50%;
-  opacity: 0.5;
-  animation: twinkle 4s ease-in-out infinite;
-}
-@keyframes twinkle {
-  0%, 100% { opacity: 0.15; }
-  50% { opacity: 0.8; }
-}
-
 ::selection { background: var(--accent); color: #1b1305; }
 
 /* ---------- Layout helpers ---------- */
@@ -411,10 +395,10 @@ nav.links a:hover::after, nav.links a.active::after { width: 100%; }
 }
 .marquee {
   display: flex;
-  gap: 4rem;
-  white-space: nowrap;
-  animation: marquee 26s linear infinite;
-  width: max-content;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.9rem 2.4rem;
+  padding: 0 1.25rem;
 }
 .marquee span {
   font-family: var(--font-display);
@@ -423,7 +407,6 @@ nav.links a:hover::after, nav.links a.active::after { width: 100%; }
   display: flex; align-items: center; gap: 0.7rem;
 }
 .marquee span::after { content: '◆'; color: var(--accent); font-size: 0.6rem; }
-@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
 /* ---------- Section header ---------- */
 .section-head { max-width: 680px; margin-bottom: 4rem; }
@@ -529,7 +512,7 @@ footer {
   gap: 2.5rem;
   padding-bottom: 3rem;
 }
-.footer-grid h4 { font-size: 0.85rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-low); margin-bottom: 1.2rem; }
+.footer-grid h3 { font-size: 0.85rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-low); margin-bottom: 1.2rem; }
 .footer-grid ul { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
 .footer-grid a { color: var(--text-mid); text-decoration: none; font-size: 0.93rem; transition: color var(--duration-normal); }
 .footer-grid a:hover { color: var(--accent); }
