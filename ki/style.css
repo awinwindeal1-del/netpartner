@@ -92,14 +92,26 @@ section { position: relative; padding: var(--space-section) 0; }
 
 h1, h2, h3, h4 {
   font-family: var(--font-display);
-  font-weight: 600;
-  letter-spacing: -0.02em;
+  /* Prata existiert nur in 400 — 600 liess den Browser Kunstfett zeichnen,
+     das war der klotzige Eindruck. Die Referenz setzt ebenfalls 400. */
+  font-weight: 400;
+  letter-spacing: -0.025em;
   color: var(--text-hi);
+  text-wrap: balance;
 }
 
-h1 { font-size: clamp(2.8rem, 2rem + 4.5vw, 5.6rem); line-height: 1.02; }
-h2 { font-size: clamp(2rem, 1.5rem + 2.2vw, 3.4rem); line-height: 1.08; }
-h3 { font-size: clamp(1.25rem, 1.1rem + 0.6vw, 1.6rem); }
+h1 { font-size: clamp(2.5rem, 1.8rem + 3.6vw, 4.6rem); line-height: 1.06; }
+h2 { font-size: clamp(1.7rem, 1.3rem + 1.7vw, 2.6rem); line-height: 1.12; }
+h3 { font-size: clamp(1.2rem, 1.05rem + 0.55vw, 1.5rem); }
+
+/* Unterseiten: ruhigerer Auftakt als die Startseite */
+.page-hero h1 {
+  font-size: clamp(1.8rem, 1.3rem + 2vw, 3.1rem);
+  line-height: 1.14;
+  letter-spacing: -0.02em;
+  max-width: 26ch;
+}
+.page-hero .lead { max-width: 58ch; }
 
 p.lead {
   font-size: clamp(1.05rem, 1rem + 0.3vw, 1.3rem);
@@ -559,7 +571,7 @@ a.card[id], section[id] { scroll-margin-top: 110px; }
 .faq-item { border-bottom: 1px solid var(--glass-border); padding: 1.6rem 0; }
 .faq-q {
   display: flex; justify-content: space-between; align-items: center;
-  cursor: pointer; font-family: var(--font-display); font-weight: 600; font-size: 1.05rem;
+  cursor: pointer; font-family: var(--font-display); font-weight: 400; font-size: 1.08rem;
 }
 .faq-q .plus { transition: transform var(--duration-normal) var(--ease-out-expo); color: var(--accent); font-size: 1.4rem; }
 .faq-item.open .faq-q .plus { transform: rotate(45deg); }
@@ -603,12 +615,13 @@ a.card[id], section[id] { scroll-margin-top: 110px; }
 .contact-info-item { display: flex; gap: 1rem; padding: 1.4rem 0; border-bottom: 1px solid var(--glass-border); }
 .contact-info-item:last-child { border-bottom: none; }
 .contact-info-item .ci-icon {
-  width: 44px; height: 44px; flex-shrink: 0;
-  border-radius: 12px;
-  background: rgba(230,198,117,0.10);
+  width: 40px; height: 40px; flex-shrink: 0;
+  border-radius: 10px;
+  border: 1px solid rgba(238, 226, 125, 0.22);
+  color: var(--accent);
   display: flex; align-items: center; justify-content: center;
-  font-size: 1.2rem;
 }
+.contact-info-item .ci-icon svg { width: 19px; height: 19px; }
 .contact-info-item .ci-label { font-size: 0.78rem; color: var(--text-low); text-transform: uppercase; letter-spacing: 0.06em; }
 .contact-info-item .ci-value { font-size: 1rem; margin-top: 0.2rem; }
 .contact-info-item a { color: var(--text-hi); text-decoration: none; }
