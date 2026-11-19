@@ -4,5 +4,12 @@
     Header always set X-Content-Type-Options "nosniff"
     Header always set X-Frame-Options "SAMEORIGIN"
     Header always set Referrer-Policy "strict-origin-when-cross-origin"
-    Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+    Header always set Permissions-Policy "geolocation=(), microphone=(self), camera=()"
+</IfModule>
+
+# Kanonische Domain: www.ki.netpartner.me -> ki.netpartner.me (greift, sobald DNS steht)
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{HTTP_HOST} ^www\.ki\.netpartner\.me$ [NC]
+    RewriteRule ^(.*)$ https://ki.netpartner.me/$1 [R=301,L]
 </IfModule>
