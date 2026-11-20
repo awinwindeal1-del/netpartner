@@ -461,7 +461,7 @@ nav.links a:hover::after, nav.links a.active::after { width: 100%; }
 /* ---------- Stats ---------- */
 .stats-strip {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
   gap: 1.5rem;
 }
 .stat { text-align: center; padding: 2.2rem 1rem; }
