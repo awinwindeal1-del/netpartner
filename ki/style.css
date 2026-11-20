@@ -225,6 +225,10 @@ header.nav.scrolled {
   display: block;
   flex: 0 0 auto;
   box-shadow: 0 0 18px var(--accent-glow);
+  animation: spin-slow 18s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .logo-mark { animation: none; }
 }
 .logo-sub {
   white-space: nowrap;
