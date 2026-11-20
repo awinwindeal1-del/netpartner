@@ -14,7 +14,7 @@
 <meta property="og:locale" content="de_DE" />
 <meta property="og:site_name" content="KI-Agentur Netpartner" />
 <meta name="twitter:card" content="summary" />
-<link rel="stylesheet" href="style.css?v=21">
+<link rel="stylesheet" href="style.css?v=24">
 <style>
   .hero-orb-wrap .ki-wuerfel{width:100%;max-width:220px;aspect-ratio:16/9;height:auto;display:block;margin:0 auto 1.4rem;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.35),0 0 0 1px rgba(230,198,117,.15)}
   .hero-orb-wrap .intro-video{width:100%;max-width:480px;aspect-ratio:16/9;height:auto;display:block;margin:0 auto;border-radius:18px;box-shadow:0 20px 60px rgba(0,0,0,.45),0 0 0 1px rgba(230,198,117,.25)}
@@ -81,7 +81,11 @@
 </header>
 
 <!-- HERO -->
-<section class="hero">
+<section class="hero hero-art">
+  <div class="hero-art-bg" aria-hidden="true">
+    <img src="img/hero-ki.jpg" srcset="img/hero-ki-1200.jpg 1200w, img/hero-ki.jpg 2400w"
+         sizes="100vw" width="2400" height="1350" alt="" fetchpriority="high" decoding="async">
+  </div>
   <div class="wrap hero-grid">
     <div class="reveal in">
       <div class="eyebrow">KI-Agentur Netpartner · Handwerk und Mittelstand</div>
@@ -97,11 +101,6 @@
       </div>
     </div>
 
-    <div class="hero-orb-wrap reveal in reveal-delay-1">
-      <video class="intro-video" controls preload="metadata" poster="videos/intro-poster.jpg" aria-label="Netpartner KI — kurz erklärt">
-        <source src="videos/intro.mp4" type="video/mp4">
-      </video>
-    </div>
   </div>
 
   <div class="scroll-cue">
@@ -168,6 +167,21 @@
       <div class="stat"><div class="value">100%</div><div class="label">Individuelle Lösungen</div></div>
       <div class="stat"><div class="value">24/7</div><div class="label">KI-gestützter Support</div></div>
           </div>
+  </div>
+</section>
+
+<!-- VIDEO -->
+<section>
+  <div class="wrap">
+    <div class="section-head center reveal" style="margin-left:auto; margin-right:auto;">
+      <div class="eyebrow" style="justify-content:center;">Kurz erklärt</div>
+      <h2>Wie die Zusammenarbeit aussieht</h2>
+    </div>
+    <div class="video-band glass reveal">
+      <video controls preload="metadata" poster="videos/intro-poster.jpg" aria-label="Netpartner KI — kurz erklärt">
+        <source src="videos/intro.mp4" type="video/mp4">
+      </video>
+    </div>
   </div>
 </section>
 
