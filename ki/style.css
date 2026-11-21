@@ -537,6 +537,47 @@ nav.links a:hover::after, nav.links a.active::after { width: 100%; }
   animation: spin-slow 16s linear infinite;
 }
 .cta-banner > * { position: relative; z-index: 1; }
+
+/* Bild-Hintergründe in Bändern */
+.cta-banner.has-art::before {
+  content: ''; position: absolute; inset: 0;
+  background-size: cover; background-position: center;
+  background-repeat: no-repeat;
+  opacity: 1; filter: none; animation: none;
+}
+.cta-banner.art-banner::before { background-image: url("img/banner-ki.jpg?v=3"); }
+.cta-banner.art-newsletter::before { background-image: url("img/kristall.jpg?v=3"); opacity: .45; }
+.cta-banner.has-art::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(11,11,10,.66) 0%, rgba(11,11,10,.84) 60%, rgba(11,11,10,.92) 100%);
+}
+.cta-banner.has-art > * { z-index: 2; }
+
+/* Bildbänder */
+.art-figure {
+  margin: 0;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(238,226,125,.14);
+  box-shadow: 0 28px 70px rgba(0,0,0,.5);
+  background: #0b0b0a;
+}
+.art-figure img { display: block; width: 100%; height: auto; aspect-ratio: 2.4 / 1; object-fit: cover; }
+.banner-figure { margin-bottom: 2.5rem; }
+.banner-figure img { aspect-ratio: 2.86 / 1; }
+
+/* Kopfbereich mit Bild */
+.page-hero.has-art { position: relative; overflow: hidden; }
+.page-hero.has-art::before {
+  content: ''; position: absolute; inset: 0;
+  background: url("img/kristall.jpg?v=3") right center / cover no-repeat;
+  opacity: .6;
+}
+.page-hero.has-art::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(90deg, rgba(11,11,10,.97) 0%, rgba(11,11,10,.92) 42%, rgba(11,11,10,.5) 76%, rgba(11,11,10,.8) 100%);
+}
+.page-hero.has-art .wrap { position: relative; z-index: 1; }
 .cta-banner h2 { margin-bottom: 1rem; }
 .cta-banner p.lead { margin: 0 auto 2.2rem; }
 
@@ -718,6 +759,10 @@ a.card[id], section[id] { scroll-margin-top: 110px; }
 }
 @media (max-width: 640px) {
   .grid-3, .grid-2, .footer-grid, .stats-strip { grid-template-columns: 1fr; }
+  .cta-banner { padding-left: 1.35rem; padding-right: 1.35rem; }
+  .cta-banner h2 { font-size: clamp(1.35rem, 5.4vw, 1.75rem); hyphens: auto; overflow-wrap: break-word; }
+  .cta-banner .btn { white-space: normal; text-align: center; max-width: 100%; font-size: 0.95rem; }
+  .banner-figure img { aspect-ratio: 2 / 1; }
   .nav-inner { gap: 0.5rem; }
   .nav-cta { display: none; }
   .menu-toggle { flex: 0 0 auto; }
