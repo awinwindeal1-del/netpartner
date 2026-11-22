@@ -7,6 +7,20 @@
     Header always set Permissions-Policy "geolocation=(), microphone=(self), camera=()"
 </IfModule>
 
+# HTML nie aus dem Browser-Cache bedienen: Browser muessen revalidieren.
+# Ohne diesen Block raten Browser eine Haltbarkeit (Heuristik ueber Last-Modified)
+# und zeigen nach einem Upload stundenlang die alte Seite.
+<IfModule mod_headers.c>
+    <FilesMatch "\.(html|htm)$">
+        Header always set Cache-Control "no-cache, must-revalidate"
+        Header always unset Pragma
+    </FilesMatch>
+    # versionierte Assets duerfen lange liegen (URLs tragen ?v=N)
+    <FilesMatch "\.(css|js)$">
+        Header always set Cache-Control "public, max-age=3600"
+    </FilesMatch>
+</IfModule>
+
 # Kanonische Domain: www.ki.netpartner.me -> ki.netpartner.me (greift, sobald DNS steht)
 <IfModule mod_rewrite.c>
     RewriteEngine On
