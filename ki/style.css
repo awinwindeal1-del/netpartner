@@ -643,6 +643,50 @@ footer {
 a.card[id], section[id] { scroll-margin-top: 110px; }
 
 /* ---------- FAQ ---------- */
+/* Modultabelle und Checklisten (Schulungsseite) */
+.table-wrap {
+  overflow-x: auto;
+  background: rgba(11, 11, 10, 0.55);
+  border: 1px solid var(--glass-border);
+  border-radius: 18px;
+  padding: 0.4rem 1.4rem 0.6rem;
+  backdrop-filter: blur(6px);
+}
+.modul-tabelle { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+.modul-tabelle th {
+  text-align: left; padding: 0.85rem 1rem;
+  font-size: 0.76rem; letter-spacing: 0.09em; text-transform: uppercase;
+  color: var(--accent); font-weight: 600;
+  border-bottom: 1px solid var(--glass-border);
+}
+.modul-tabelle td {
+  padding: 0.95rem 1rem; color: var(--text-mid);
+  border-bottom: 1px solid rgba(201,162,39,.12);
+  vertical-align: top;
+}
+.modul-tabelle td:first-child { color: var(--text-hi); }
+.modul-tabelle tr:last-child td { border-bottom: none; }
+.check-liste { list-style: none; display: flex; flex-direction: column; gap: 0.9rem; }
+.check-liste li { position: relative; padding-left: 1.9rem; color: var(--text-mid); }
+.check-liste li::before {
+  content: ""; position: absolute; left: 0; top: 0.55em;
+  width: 9px; height: 9px; border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 12px rgba(238,226,125,.6);
+}
+@media (max-width: 640px) {
+  .modul-tabelle { font-size: 0.9rem; }
+  .modul-tabelle thead { display: none; }
+  .modul-tabelle tr { display: block; padding: 0.9rem 0; border-bottom: 1px solid rgba(201,162,39,.14); }
+  .modul-tabelle tr:last-child { border-bottom: none; }
+  .modul-tabelle td { display: block; border: none; padding: 0.12rem 0; }
+  .modul-tabelle td:first-child { color: var(--text-hi); font-weight: 600; margin-bottom: 0.3rem; }
+  .modul-tabelle td:nth-child(2)::before { content: "Inhalt: "; color: var(--text-low); }
+  .modul-tabelle td:nth-child(3)::before { content: "Dauer: "; color: var(--text-low); }
+  .modul-tabelle td:nth-child(4)::before { content: "Voraussetzung: "; color: var(--text-low); }
+  .table-wrap { padding: 0.2rem 1.1rem; }
+}
+
 .faq-item { border-bottom: 1px solid var(--glass-border); padding: 1.6rem 0; }
 .faq-q {
   display: flex; justify-content: space-between; align-items: center;
